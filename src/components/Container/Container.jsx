@@ -6,8 +6,8 @@ import {
   CheckOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-import "./Container.css";
 import Calendar from "../../shared/Calendar";
+import "./Container.css";
 
 const Container = () => {
   const [todos, setTodos] = useState([]);
