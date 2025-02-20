@@ -6,10 +6,6 @@
   gap: 10px;
 }
 
-.listBox {
-  width: 300px;
-}
-
 .whatToDo {
   height: 40px;
 }
@@ -25,6 +21,12 @@ ul {
   list-style: none;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.toDoContainer {
+  display: flex;
+  align-items: center;
   gap: 10px;
 }
 

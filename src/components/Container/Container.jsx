@@ -68,7 +68,8 @@ const Container = () => {
       <div className="allInputs">
         <Calendar />
         <div className="listBox">
-          <Input className="whatToDo"
+          <Input
+            className="whatToDo"
             value={newTodo}
             onChange={handleMyInputs}
             placeholder="Add new todo..."
@@ -78,7 +79,7 @@ const Container = () => {
           </Button>
           <ul>
             {todos.map((todo) => (
-              <li key={todo.id}>
+              <li className="toDoContainer" key={todo.id}>
                 <Checkbox
                   className="listBox"
                   checked={todo.completed}
@@ -112,6 +113,9 @@ const Container = () => {
                         textDecoration: todo.completed
                           ? "line-through"
                           : "none",
+                          color: todo.completed
+                          ? "red"
+                          : "black",
                       }}
                     >
                       {todo.text}
