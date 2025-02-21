@@ -12,6 +12,7 @@ import "./Container.css";
 const Container = () => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [editingId, setEditingId] = useState(null);
   const [editedText, setEditedText] = useState("");
 
@@ -23,6 +24,10 @@ const Container = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   const handleEdit = (id, text) => {
     setEditingId(id);
     setEditedText(text);
@@ -31,7 +36,10 @@ const Container = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newTodo.trim() !== "") {
-      setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
+      setTodos([
+        ...todos,
+        { id: todos.length + 1, text: newTodo, completed: false },
+      ]);
       setNewTodo("");
     }
   };
@@ -61,6 +69,10 @@ const Container = () => {
     setEditedText("");
   };
 
+  const filteredTodos = todos.filter((todo) =>
+    todo.text.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="mainBody">
       <div className="bgPhoto"></div>
@@ -68,6 +80,13 @@ const Container = () => {
       <div className="allInputs">
         <Calendar />
         <div className="listBox">
+          <Input
+            value={searchQuery}
+            onChange={handleSearch}
+            placeholder="Search todos..."
+            className="whatToDo"
+            style={{ marginBottom: "10px" }}
+          />
           <Input
             className="whatToDo"
             value={newTodo}
@@ -78,7 +97,7 @@ const Container = () => {
             Add new Item
           </Button>
           <ul>
-            {todos.map((todo) => (
+            {filteredTodos.map((todo) => (
               <li className="toDoContainer" key={todo.id}>
                 <Checkbox
                   className="listBox"
@@ -113,9 +132,7 @@ const Container = () => {
                         textDecoration: todo.completed
                           ? "line-through"
                           : "none",
-                          color: todo.completed
-                          ? "red"
-                          : "black",
+                        color: todo.completed ? "red" : "black",
                       }}
                     >
                       {todo.text}
