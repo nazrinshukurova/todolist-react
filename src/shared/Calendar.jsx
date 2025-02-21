@@ -4,11 +4,8 @@ const { RangePicker } = DatePicker;
 
 const Calendar = () => {
   return (
-    <div
-      className="calendar"
-      style={{ display: "flex", justifyContent: "center", marginTop: '70px' }}
-    >
-      <RangePicker size={"middle"} style={{width:'300px',height:'40px'}} />
+    <div className="calendar">
+      <RangePicker size={"middle"} style={{ width: "300px", height: "40px" }} />
     </div>
   );
 };

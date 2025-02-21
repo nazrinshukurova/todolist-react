@@ -81,17 +81,17 @@ const Container = () => {
         <Calendar />
         <div className="listBox">
           <Input
-            value={searchQuery}
-            onChange={handleSearch}
-            placeholder="Search todos..."
-            className="whatToDo"
-            style={{ marginBottom: "10px" }}
-          />
-          <Input
             className="whatToDo"
             value={newTodo}
             onChange={handleMyInputs}
             placeholder="Add new todo..."
+            style={{ marginBottom: "10px" }}
+          />
+          <Input
+            value={searchQuery}
+            onChange={handleSearch}
+            placeholder="Search todos..."
+            className="whatToDo"
           />
           <Button className="addButton" onClick={handleSubmit}>
             Add new Item
